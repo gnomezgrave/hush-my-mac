@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>muted.png</file>
+        <file>unmuted.png</file>
+        <file>sound.png</file>
+        <file>no_sound.png</file>
+    </qresource>
+</RCC>
