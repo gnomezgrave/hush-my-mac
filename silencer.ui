@@ -221,7 +221,7 @@
     <string>If checked, the computer will be put on silence each &quot;interval&quot; seconds. </string>
    </property>
    <property name="text">
-    <string>Forcfully hush!</string>
+    <string>Forcefully hush!</string>
    </property>
   </widget>
  </widget>
