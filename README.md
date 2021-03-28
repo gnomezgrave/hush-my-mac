@@ -64,6 +64,10 @@ Create a DMG file:
 5. Drag and drop the app to the Applications folder.
 6. Search for "HushMyMac" on Spotlight search, and we know the rest.
 
+### For normal people
+
+Get the latest version of the installation package from the [releases](https://github.com/gnomezgrave/hush-my-mac/releases/) section.
+
 ## How to contribute?
 
 Well, I don't know if this is a worthwhile project anyone want to spend time on. But hey, it's making my life easier, so it might do the same for you.
