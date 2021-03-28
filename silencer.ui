@@ -17,7 +17,11 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Silencer</string>
+   <string/>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="rc.qrc">
+    <normaloff>:/icons/no_sound.png</normaloff>:/icons/no_sound.png</iconset>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -217,10 +221,12 @@
     <string>If checked, the computer will be put on silence each &quot;interval&quot; seconds. </string>
    </property>
    <property name="text">
-    <string>Force Mute</string>
+    <string>Forcfully hush!</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="rc.qrc"/>
+ </resources>
  <connections/>
 </ui>
