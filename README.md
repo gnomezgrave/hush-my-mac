@@ -70,6 +70,7 @@ Well, I don't know if this is a worthwhile project anyone want to spend time on.
 
 So, if anyone would like to contribute with new features or bugfixes, feel free to create a Pull Request.
 
+Icons are from: [Mute Icon](https://www.flaticon.es/icono-gratis/sin-sonido_3558820), [Unmuted Icon](https://www.flaticon.es/icono-gratis/sonido_3721694)
 
 ## Want to motivate me?
 
