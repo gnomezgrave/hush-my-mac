@@ -24,7 +24,7 @@ Silencer::Silencer(QWidget *parent)
     timeFrom = nullptr;
     timeUntil = nullptr;
 
-    setWindowFlags(Qt::Dialog | Qt::WindowTitleHint | Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
+    setWindowFlags(Qt::Tool | Qt::WindowTitleHint | Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
 
     createActions();
     createTrayIcon();
@@ -42,7 +42,7 @@ Silencer::Silencer(QWidget *parent)
 Silencer::~Silencer()
 {
     delete ui;
-    delete _settings;
+    delete _settings; // this will automatically call sync()
     delete timeFrom;
     delete timeUntil;
 
@@ -59,8 +59,7 @@ Silencer::~Silencer()
 
 void Silencer::onQuitClicked()
 {
-    QMessageBox::StandardButton resBtn = QMessageBox::question( this, APP_NAME,
-                                                                tr("Want to quit?"));
+    QMessageBox::StandardButton resBtn = QMessageBox::question(this, APP_NAME, tr("Want to quit?"));
     if (resBtn == QMessageBox::Yes)
     {
         QCoreApplication::quit();
@@ -78,8 +77,7 @@ void Silencer::onApplyClicked()
     _settings->setValue("enabled", ui->btn_enable->isChecked());
     _settings->setValue("force_update", ui->chk_forceMute->isChecked());
 
-    _settings->sync();
-    qDebug() << "Settings saved";
+    qDebug() << "Settings updated!";
 }
 
 
@@ -149,7 +147,7 @@ void Silencer::onTimerTick()
     // Don't update when Force Update is disabled and the states are the same
     if (!ui->chk_forceMute->isChecked() && newAction == currentAction)
     {
-        qDebug() << "States are the same. No need to change anything";
+        qDebug() << "States are the same. No need to change anything.";
         return;
     }
 
@@ -165,7 +163,6 @@ void Silencer::onTimerTick()
         qDebug() << "Unmuting the sounds.";
         this->unmute();
     }
-
 }
 
 void Silencer::onEnableClicked(bool checked)
@@ -193,7 +190,6 @@ void Silencer::onEnableMenuClicked()
 
 void Silencer::createActions()
 {
-
     enableAction = new QAction(tr("&Enable"), this);
     connect(enableAction, &QAction::triggered, this, &Silencer::onEnableMenuClicked);
 
@@ -264,6 +260,7 @@ void Silencer::updateValues()
     timer.setInterval(i_interval * 1000);
 
     ui->btn_enable->setChecked(b_enabled);
+    this->onEnableClicked(b_enabled);
 
     timeFrom = new QTime(ui->t_from->time());
     timeUntil = new QTime(ui->t_until->time());
@@ -283,7 +280,7 @@ void Silencer::createTrayIcon()
 
     QIcon icon(":/icons/no_sound.png");
     trayIcon->setIcon(icon);
-
+//    trayIconMenu->setAsDockMenu();
 }
 
 void Silencer::closeEvent (QCloseEvent *event)
