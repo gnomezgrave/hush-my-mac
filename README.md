@@ -2,6 +2,8 @@
 
 ## TLDR;
 
+This small app will make a Mac silent during a given timeframe/schedule.
+
 
 ## Why?
 
