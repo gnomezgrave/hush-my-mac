@@ -30,6 +30,7 @@ public:
 
 private slots:
     void onQuitClicked();
+    void onRestoreClicked();
     void onApplyClicked();
     void onTimerTick();
 

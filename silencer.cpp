@@ -66,6 +66,12 @@ void Silencer::onQuitClicked()
     }
 }
 
+void Silencer::onRestoreClicked()
+{
+    this->show();
+    this->raise();
+}
+
 void Silencer::onApplyClicked()
 {
     timeFrom = new QTime(ui->t_from->time());
@@ -194,7 +200,7 @@ void Silencer::createActions()
     connect(enableAction, &QAction::triggered, this, &Silencer::onEnableMenuClicked);
 
     restoreAction = new QAction(tr("&Restore"), this);
-    connect(restoreAction, &QAction::triggered, this, &Silencer::show);
+    connect(restoreAction, &QAction::triggered, this, &Silencer::onRestoreClicked);
 
     quitAction = new QAction(tr("&Quit"), this);
     connect(quitAction, &QAction::triggered, this, &Silencer::onQuitClicked);
@@ -248,7 +254,7 @@ void Silencer::updateValues()
 {
     QString s_timeFrom = _settings->value("from", ui->t_from->time().toString()).toString();
     QString s_timeUntil = _settings->value("until", ui->t_until->time().toString()).toString();
-    int i_interval = _settings->value("interval", 1).toInt();
+    int i_interval = _settings->value("interval", 5).toInt();
     bool b_enabled = _settings->value("enabled", true).toBool();
     bool b_forceUpdate = _settings->value("force_update", false).toBool();
 
